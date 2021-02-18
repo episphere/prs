@@ -1,4 +1,7 @@
 # PRS
+
+[![Join the chat at https://gitter.im/episphere/PRS](https://badges.gitter.im/episphere/PRS.svg)](https://gitter.im/episphere/PRS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Polygenic risk scores 
 
 Notes from meeting
