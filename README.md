@@ -11,7 +11,7 @@ Polygenic risk scores
 - https://www.pgscatalog.org
 - https://prsweb.sph.umich.edu:8443/
 
-## three breast cancer PRSs:
+## Three breast cancer PRSs:
 
 - https://www.pgscatalog.org/score/PGS000004/
 - https://www.pgscatalog.org/score/PGS000005/
