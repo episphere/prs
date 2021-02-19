@@ -4,14 +4,14 @@
 
 Polygenic risk scores 
 
-Notes from meeting
+## Notes from meeting
 
 - Start with Breast / PLCO ?
 - https://www.targetvalidation.org
 - https://www.pgscatalog.org
 - https://prsweb.sph.umich.edu:8443/
 
-# three breast cancer PRSs:
+## three breast cancer PRSs:
 
 - https://www.pgscatalog.org/score/PGS000004/
 - https://www.pgscatalog.org/score/PGS000005/
