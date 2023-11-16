@@ -320,6 +320,9 @@ PGS23.Match2 = function (data, progressReport) {
         //} else if (data.pgs.dt[weight_idx].reduce((a, b) => Math.min(a, b)) > -0.00002 ) { //&&(calcRiskScore.reduce((a,b)=>Math.max(a,b))<=1)){ // hazard ratios?
             } else if (weights.reduce((a, b) => Math.min(a, b)) > -0.00002 ) { //&&(calcRiskScore.reduce((a,b)=>Math.max(a,b))<=1)){ // hazard ratios?
                 console.log('these are not betas :-(',weights) 
+		data.QC = false
+                data.QCtext = 'these are not betas :-('
+		data.PRS = Math.exp(calcRiskScore.reduce((a, b) => a + b))
                 //console.log('these are not betas :-(',calcRiskScore.map((a) => a)) weights
                 document.getElementById('my23CalcTextArea').value += ` Found ${data.pgsMatchMy23.length} PGS matches to the 23andme report.`
                 document.getElementById('my23CalcTextArea').value += ` However, these don't look right (betas = false), QAQC FAILED ! ... You could look for another entry for the same trait where betas pass QAQC, maybe give it a try at https://www.pgscatalog.org/search/?q=${data.pgs.meta.trait_mapped.replace(' ','+')}.`
@@ -330,15 +333,19 @@ PGS23.Match2 = function (data, progressReport) {
             // large betas over 100
            // }else if (calcRiskScore.reduce((a, b) => Math.max(a, b)) > 100) { //&&(calcRiskScore.reduce((a,b)=>Math.max(a,b))<=1)){ // hazard ratios?
                 console.log('these are large betas :-(',weights)
+		data.QC = false
+                data.QCtext = 'these are large betas :-('
+		data.PRS = Math.exp(calcRiskScore.reduce((a, b) => a + b))
                 document.getElementById('my23CalcTextArea').value += ` Found ${data.pgsMatchMy23.length} PGS matches to the 23andme report.`
                 document.getElementById('my23CalcTextArea').value += ` However, these don't look right (betas = false), QAQC FAILED ! ... You could look for another entry for the same trait where betas pass QAQC, maybe give it a try at https://www.pgscatalog.org/search/?q=${data.pgs.meta.trait_mapped.replace(' ','+')}.`
                 document.getElementById('plotRiskDiv').hidden = true
                 document.getElementById('hidenCalc').hidden = false
-                data.PRS = Math.exp(calcRiskScore.reduce((a, b) => a + b))
                 plotAllMatchByEffect4()
                 pieChart()
             } else {
                 data.PRS = Math.exp(calcRiskScore.reduce((a, b) => a + b))
+		data.QC = true
+                data.QCtext = ''
                 document.getElementById('my23CalcTextArea').value += ` Polygenic Risk Score, PRS=${Math.round(data.PRS * 1000) / 1000}, calculated from ${data.pgsMatchMy23.length} PGS matches to the 23andme report.`
                 //my23CalcTextArea.value+=` ${data.pgsMatchMy23.length} PGS matches to the 23andme report.`
                 document.getElementById('plotRiskDiv').hidden = false
