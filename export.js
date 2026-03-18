@@ -50,9 +50,9 @@ PGS23.loadPGS = async (i=1) => {
         document.getElementById("pgsBuild").href = `https://episphere.github.io/pgs/?id=${i}`
         let PGSstr = i.toString()
         PGSstr = "PGS000000".slice(0, -PGSstr.length) + PGSstr
-        div.querySelector('#urlPGS').href = `https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/${PGSstr}/ScoringFiles/Harmonized/`
+        div.querySelector('#urlPGS').href = `${pgs.ftp}/${PGSstr}/ScoringFiles/Harmonized/`
         //check pgs file size
-        let fsize = (await fetch(`https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/${PGSstr}/ScoringFiles/Harmonized/${PGSstr}_hmPOS_GRCh37.txt.gz`, {
+        let fsize = (await fetch(`${pgs.ftp}/${PGSstr}/ScoringFiles/Harmonized/${PGSstr}_hmPOS_GRCh37.txt.gz`, {
             method: 'HEAD'
         })).headers.get('Content-Length');
         if ((fsize > 1000000) & (!div.querySelector('#checkLargeFile').checked)) {
